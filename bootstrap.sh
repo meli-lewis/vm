@@ -55,6 +55,10 @@ sudo apt-get install sublime-text
 # Adding curl
 sudo apt-get install curl
 
+# R and R-Studio
+print_header "Installing R"
+sudo apt-get install r-base r-base-dev
+
 # pyenv
 print_header "Installing pyenv"
 curl -L https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer | bash
@@ -83,8 +87,8 @@ git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-bu
 
 
 #install latest stable version of Ruby
-rbenv install 2.5.0
-rbenv global 2.5.0
+rbenv install 2.6.1
+rbenv global 2.6.1
 
 sudo chown -R nicar:nicar .pyenv
 sudo chown -R nicar:nicar .rbenv
@@ -92,24 +96,21 @@ sudo chown -R nicar:nicar .rbenv
 pyenv update
 
 print_header "Installing Python 3"
-pyenv install 3.6.4
+pyenv install 3.7.2
 print_header "Installing Python 2"
-pyenv install 2.7.14
-print_header "Setting 3.6.4 as the default python version"
-pyenv global 3.6.4
+pyenv install 2.7.15
+print_header "Setting 3.7.2 as the default python version"
+pyenv global 3.7.2
 print_header "Creating virtual environments"
 mkdir code
 mkdir code/python2 && cd $_
-pyenv virtualenv 2.7.14 python-2
+pyenv virtualenv 2.7.15 python-2
 pyenv local python-2
 cd ..
 mkdir python3 && cd $_
-pyenv virtualenv 3.6.4 python-3
+pyenv virtualenv 3.7.2 python-3
 pyenv local python-3
 cd ~
-# R and R-Studio
-print_header "Installing R"
-sudo apt-get install r-base r-base-dev
 
 # python scientific stack
 print_header "Installing python scientific stack"
@@ -120,7 +121,7 @@ print_header "pip installing favored Python libraries"
 pip install --quiet jupyter
 pip install --quiet beautifulsoup4
 pip install --quiet requests
-pip install --quiet django==1.11.10
+pip install --quiet django
 pip install --quiet pandas
 pip install --quiet csvkit
 pip install --quiet miditime
@@ -172,10 +173,10 @@ sudo apt-get install -y npm
 
 
 #Tor Browser
-sudo apt-get install tor-browser
+sudo apt-get install tor
 
 #install Java
-print_header "installing Java"
+print_header "Installing Java"
 sudo apt-get -qq install default-jre
 
 #install ILENE
@@ -184,26 +185,8 @@ cd ILENE
 npm install
 cd
 
-
-
-#install jruby
-# print_header "installing jruby for Tabula"
-# rbenv install jruby-1.7.18
-# #install Tabula extractor for awesome command line pdf extraction
-# echo " Setting up Tabula"
-# mkdir tabula
-# cd tabula
-# rbenv local jruby-1.7.18
-# jruby -S gem install tabula-extractor
-# cd # return home
-
 #perform one last upgrade to all software packages
 sudo apt-get upgrade
 
-# randomly generate animal
-# animals=$(cowsay -l | tail -n+2 | shuf)
-# test=" " read -a array <<< "$animals"
-
-# # cowsay
 # cowsay -f ${array[2]} "All done! Now, go save journalism!"
 cowsay "All done! Now, go save journalism!"
