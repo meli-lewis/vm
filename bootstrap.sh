@@ -11,11 +11,11 @@ print_header() {
 
 
 print_header "Updating Ubuntu"
-#Add repositories for QGIS, Sublime Text 3, R and Tor Browser bundle
+# Add repositories for QGIS, Sublime Text 3, R and Tor Browser bundle
 echo "deb http://qgis.org/debian bionic main" | sudo tee -a /etc/apt/sources.list
 echo "deb-src http://qgis.org/debian bionic main" | sudo tee -a /etc/apt/sources.list
 
-#add gpg key for qgis download and install
+# add gpg key for qgis download and install
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key CAEB3DC3BDF7FB45
 
 # add gpg key for Sublime Text 3
@@ -113,11 +113,12 @@ pyenv local python-3
 cd ~
 
 # python scientific stack
-print_header "Installing python scientific stack"
+print_header "Installing Python scientific stack"
 sudo apt-get -qq install python-numpy python-scipy python-matplotlib python-dev python-pip python-sip pyqt4-dev-tools
 
 # various Python libraries we like
 print_header "pip installing favored Python libraries"
+pip install --quiet --upgrade pip
 pip install --quiet jupyter
 pip install --quiet beautifulsoup4
 pip install --quiet requests
