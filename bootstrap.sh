@@ -27,8 +27,6 @@ sudo apt-get install apt-transport-https
 # select the stable version of Sublime Text 3
 echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
 
-sudo add-apt-repository -y ppa:webupd8team/tor-browser
-
 # point apt to the ubuntu repository for R
 sudo echo "deb http://cran.rstudio.com/bin/linux/ubuntu bionic/" | sudo tee -a /etc/apt/sources.list
 
@@ -71,10 +69,10 @@ echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.bashrc
 # Install Ruby
 print_header "installing Ruby, rbenv and ruby-build"
 
-#install dependencies
+# Install dependencies
 sudo apt-get install -qq autoconf bison libyaml-dev libreadline6-dev libffi-dev libgdbm3 libgdbm-dev
 
-#install rbenv
+# Install rbenv
 git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
 
 echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
@@ -82,11 +80,11 @@ echo 'eval "$(rbenv init -)"' >> ~/.bashrc
 
 source ~/.bashrc
 
-#install ruby-build
+# Install ruby-build
 git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
 
 
-#install latest stable version of Ruby
+# Install latest stable version of Ruby
 rbenv install 2.6.1
 rbenv global 2.6.1
 
@@ -99,7 +97,7 @@ print_header "Installing Python 3"
 pyenv install 3.7.2
 print_header "Installing Python 2"
 pyenv install 2.7.15
-print_header "Setting 3.7.2 as the default python version"
+print_header "Setting 3.7.2 as the default Python version"
 pyenv global 3.7.2
 print_header "Creating virtual environments"
 mkdir code
@@ -118,25 +116,24 @@ sudo apt-get -qq install python-numpy python-scipy python-matplotlib python-dev 
 
 # various Python libraries we like
 print_header "pip installing favored Python libraries"
-pip install --quiet --upgrade pip
-pip install --quiet jupyter
-pip install --quiet beautifulsoup4
-pip install --quiet requests
-pip install --quiet django
-pip install --quiet pandas
-pip install --quiet csvkit
-pip install --quiet miditime
-pip install --quiet flask
-pip install --quiet agate
-pip install --quiet psycopg2
-pip install --quiet vega3
-pip install --quiet altair
+pip install --upgrade pip
+pip install jupyter
+pip install beautifulsoup4
+pip install requests
+pip install django
+pip install pandas
+pip install csvkit
+pip install miditime
+pip install flask
+pip install agate
+pip install psycopg2
+pip install vega3
+pip install altair
 
 # enable ipyvega for altair to work
 source .bashrc
 jupyter nbextension install --sys-prefix --py vega3
 jupyter nbextension enable vega3 --py --sys-prefix
-
 
 # postgres
 print_header "installing latest PostgreSQL and PostGIS"
@@ -152,7 +149,7 @@ print_header "Installing MySQL"
 sudo apt-get -qq install mysql-server mysql-client libmysqlclient-dev
 
 # Sqlite3
-print_header "Installing Sqlite3"
+print_header "Installing SQLite3"
 sudo apt-get install sqlite3 libsqlite3-dev
 
 #qgis
@@ -169,12 +166,14 @@ print_header "Installing Node.js"
 sudo apt-get -qq install nodejs
 sudo ln -s /usr/bin/nodejs /usr/bin/node
 
+
 #npm
 sudo apt-get install -y npm
 
 
 #Tor Browser
 sudo apt-get install tor
+
 
 #install Java
 print_header "Installing Java"
